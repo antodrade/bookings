@@ -161,7 +161,7 @@
 })()
 
  document.getElementById("colorButton").addEventListener("click", function(){
-  attention.success();
+  attention.toast();
  })
 
  const elem = document.getElementById('reservation-dates');
@@ -186,8 +186,29 @@ function notifyModal(title, text, icon, confirmationButtonText){
 }
 
 function  Prompt(){
-  let toast = function(){
-    console.log("clicked button and got toast")
+  let toast = function(c){
+    const {
+      msg = "",
+      icon = "success",
+      position = "top-end",
+    } = c;
+    
+    const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Signed in successfully'
+})
   }
 
   let success = function(){
