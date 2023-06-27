@@ -161,7 +161,7 @@
 })()
 
  document.getElementById("colorButton").addEventListener("click", function(){
-  attention.toast();
+  attention.toast({msg: "Oooops", icon: "error"});
  })
 
  const elem = document.getElementById('reservation-dates');
@@ -192,10 +192,12 @@ function  Prompt(){
       icon = "success",
       position = "top-end",
     } = c;
-    
+
     const Toast = Swal.mixin({
   toast: true,
-  position: 'top-end',
+  title: msg,
+  position: position,
+  icon: icon,
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
@@ -206,18 +208,43 @@ function  Prompt(){
 })
 
 Toast.fire({
-  icon: 'success',
-  title: 'Signed in successfully'
 })
   }
 
-  let success = function(){
-    console.log("clicked button and got success")
+  let success = function(c){
+  
+    const {
+      msg = "",
+      title = "",
+      footer="",
+    }=c;
+    Swal.fire({
+  icon: 'success',
+  title: title,
+  text: msg,
+  footer: footer,
+})
   }
+
+  let error = function(c){
+  
+  const {
+    msg = "",
+    title = "",
+    footer="",
+  }=c;
+  Swal.fire({
+icon: 'error',
+title: title,
+text: msg,
+footer: footer,
+})
+}
 
 return {
   toast: toast,
   success: success,
+  error: error,
  } 
 }
 
