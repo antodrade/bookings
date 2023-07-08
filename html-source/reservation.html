@@ -25,6 +25,10 @@
   color: red;
 }
 
+.datepicker{
+  z-index: 10000;
+}
+
 </style> 
 
 </head>
@@ -167,10 +171,10 @@
      <div class="col">
        <div class="row" id="reservation-dates-modal">
          <div class="col">
-           <input required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
+           <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
          </div>
          <div class="col">
-           <input required class="form-control" type="text" name="end" id="end" placeholder="Departure">
+           <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
          </div>
         </div>
       </div>
@@ -269,12 +273,25 @@ async function custom(c) {
   backdrop: false,
   focusConfirm: false,
   showCancelButton: true,
+  willOpen: ()=>{
+    const elem = document.getElementById('reservation-dates-modal');
+    const rp = new DateRangePicker(elem, {
+      format: 'yyyy-mm-dd',
+      showOnFocus: true,
+    })
+  },
   preConfirm: () => {
     return [
       document.getElementById('start').value,
       document.getElementById('end').value
     ]
-  }
+  },
+
+  didOpen: ()=>{
+    document.getElementById('start').removeAttribute('disabled');
+    document.getElementById('end').removeAttribute('disabled');
+
+  },
 })
 
 if (formValues) {
