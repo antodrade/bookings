@@ -56,15 +56,15 @@
                  Rooms
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/generals-querters">General's Quarter</a></li>
-                  <li><a class="dropdown-item" href="majors-suite.html">Major's Suite</a></li>
+                  <li><a class="dropdown-item" href="/generals-quarters">General's Quarter</a></li>
+                  <li><a class="dropdown-item" href="majors-suite">Major's Suite</a></li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="reservation.html">Book Now</a>
+                <a class="nav-link" href="/search-availability">Book Now</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="/contact">Contact</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
@@ -78,44 +78,6 @@
 {{block "content" .}}
 
 {{end}}
-<div class="container">
-
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <h1 class="mt-5"> Search for Availability </h1>
-      
-     
-      <form action="reservation.html" method="GET" novalidate class="needs-validation">
-        
-
-        <div class="row">
-          <div class="col">
-          <div class="row" id="reservation-dates">
-            <div class="col">
-           <input required class="form-control" type="text" name="start" placeholder="Arrival">
-          </div>
-          <div class="col">
-           <input  required class="form-control" type="text" name="end" placeholder="Departure">  
-           </div>
-          </div>
-        </div>
-       </div>
-       
-
-
-      <hr>
-        <button type="submit" class="btn btn-primary">Search Availability</button>
-      </form>
-      
-    </div>  
-
-    
-       
-    
-
-
-  </div>
 
 
   <div class="row my-footer">
@@ -166,30 +128,9 @@
   })
 })()
 
- document.getElementById("colorButton").addEventListener("click", function(){
-  let html = `
-  <form id="check-availability-form" action="" method="post" novalidate class="needs-validation">
-    <div class="row">
-     <div class="col">
-       <div class="row" id="reservation-dates-modal">
-         <div class="col">
-           <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
-         </div>
-         <div class="col">
-           <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
-         </div>
-        </div>
-      </div>
-    </div>
-  </form> 
-  `
-  attention.custom({msg: html, title: "Choose your dates"});
- })
 
- const elem = document.getElementById('reservation-dates');
-const rangepicker = new DateRangePicker(elem, {
-  format: "yyyy-mm-dd"
-}); 
+
+
 
 function notify(msg, msgType) {
   notie.alert({

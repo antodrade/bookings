@@ -70,3 +70,23 @@ func (m* Repository) Generals(w http.ResponseWriter, r *http.Request){
 func (m* Repository) Majors(w http.ResponseWriter, r *http.Request){
 	render.RenderTemplate(w, "majors.page.html", &models.TemplateData{})
 }
+
+// Availability renders the search availability page
+func (m* Repository) Availability(w http.ResponseWriter, r *http.Request){
+	render.RenderTemplate(w, "search-availability.page.html", &models.TemplateData{})
+}
+
+// PostAvailability renders the search availability page
+func (m* Repository) PostAvailability(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Posted to search availability"))
+}
+
+
+//COntact render the contact page
+func (m* Repository) Contact(w http.ResponseWriter, r *http.Request){
+	render.RenderTemplate(w, "contact.page.html", &models.TemplateData{})
+}
+
+func (m* Repository) MakeReservation(w http.ResponseWriter, r *http.Request){
+	render.RenderTemplate(w, "make-reservation.page.html", &models.TemplateData{})
+}
