@@ -10,7 +10,7 @@
       
      
       <form action="/search-availability" method="post" novalidate class="needs-validation">
-        
+        <input type="hidden" name="csrf_token" value="{{.CSFRToken}}">
 
         <div class="row">
           <div class="col">
