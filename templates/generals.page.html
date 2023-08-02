@@ -7,8 +7,9 @@
        <div class="col">
          <img src="/static/images/generals-quarters.png" class="img-fluid img-thumbnail rounded mx-auto d-block room-image" alt="room-image">
       </div>
+    
     </div>
-   
+  
       <div class="row">
            <div class="col">
             <h1 class="text-center" mt-4>General's Quarter</h1>
@@ -21,6 +22,7 @@
 
            </p>
          </div>
+         
        
      
   </div>
@@ -56,7 +58,21 @@
     </div>
   </form> 
   `
-  attention.custom({msg: html, title: "Choose your dates"});
+  attention.custom({
+     msg: html,
+     title: "Choose your dates",
+     callback: function (result){
+      console.log("called");
+
+      fetch('/search-availability-json')
+      .then(response=>response.json())
+      .then(data => {
+        console.log(data);
+        console.log(data.ok);
+        console.log(data.Message);
+      })
+     }
+    });
  })
 </script>
 {{end}}
