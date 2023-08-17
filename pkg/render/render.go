@@ -23,7 +23,7 @@ func NewTemplate(a *config.AppConfig) {
 }
 
 func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateData {
-	td.CSFRToken = nosurf.Token(r)
+	td.CSRFToken = nosurf.Token(r)
 	return td
 }
 
