@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/http"
 	"log"
-	"github.com/antodrade/bookings/pkg/config"
-	"github.com/antodrade/bookings/pkg/models"
-	"github.com/antodrade/bookings/pkg/render"
+	"github.com/antodrade/bookings/internal/config"
+	"github.com/antodrade/bookings/internal/models"
+	"github.com/antodrade/bookings/internal/render"
 )
 
 // Repo the repository used by the handlers

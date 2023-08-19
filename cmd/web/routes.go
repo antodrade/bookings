@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/antodrade/bookings/pkg/config"
-	"github.com/antodrade/bookings/pkg/handlers"
+	"github.com/antodrade/bookings/internal/config"
+	"github.com/antodrade/bookings/internal/handlers"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 )

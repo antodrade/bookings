@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/antodrade/bookings/pkg/config"
-	"github.com/antodrade/bookings/pkg/handlers"
-	"github.com/antodrade/bookings/pkg/render"
+	"github.com/antodrade/bookings/internal/config"
+	"github.com/antodrade/bookings/internal/handlers"
+	"github.com/antodrade/bookings/internal/render"
 )
 
 const portNumber = ":8080"
