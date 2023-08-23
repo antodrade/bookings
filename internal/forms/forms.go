@@ -1,20 +1,28 @@
 package forms
 
-type errors map[string][]string
+import "net/url"
+import "net/http"
 
-// Add adds an error message for a given form field
-func (e errors) Add(field, message string) {
-	e[field] = append(e[field], message)
+// Form creates a custom form struct, embeds a url.Values object
+type Form struct {
+	url.Values
+	Errors errors
+}
+
+//New initializes a form struct
+func New(data url.Values) *Form {
+	return &Form{
+		data,
+		errors(map[string][]string{}),
+	}
 }
 
 
-//Get returns the first error message
-func (e errors) Get(field string) string {
-es := e[field]
-if len(es) == 0 {
-	return ""
-}
-
-return es[0]
-
+// has checks if form field is in post and not empty
+func (f *Form) Has(field string, r *http.Request) bool {
+	x := r.Form.Get(field)
+	if x == ""{
+		return false
+	}
+	return true
 }

@@ -3,9 +3,11 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
 	"log"
+	"net/http"
+
 	"github.com/antodrade/bookings/internal/config"
+	"github.com/antodrade/bookings/internal/forms"
 	"github.com/antodrade/bookings/internal/models"
 	"github.com/antodrade/bookings/internal/render"
 )
@@ -55,7 +57,14 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 
 // Reservation renders the make a reservation page and dislplays form
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "make-reservation.page.html", r, &models.TemplateData{})
+	render.RenderTemplate(w, "make-reservation.page.html", r, &models.TemplateData{
+		Form: forms.New(nil),
+	})
+}
+
+// PostReservation handles the post of a reservation form
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+	
 }
 
 // Generals renders the room page
@@ -106,6 +115,4 @@ func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "contact.page.html", r, &models.TemplateData{})
 }
 
-func (m *Repository) MakeReservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "make-reservation.page.html", r,  &models.TemplateData{})
-}
+
