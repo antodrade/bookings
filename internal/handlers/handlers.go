@@ -64,7 +64,18 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 
 // PostReservation handles the post of a reservation form
 func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
-	
+	err := r.ParseForm()
+	if err != nil{
+		log.Println(err)
+		return
+	}
+
+	reservation:= models.Reservation{
+		FirstName: r.Form.Get("first_name"),
+		LastName:  r.Form.Get("last_name"),
+		Phone:     r.Form.Get("phone"),
+		Email:     r.Form.Get("email"),
+	}
 }
 
 // Generals renders the room page
