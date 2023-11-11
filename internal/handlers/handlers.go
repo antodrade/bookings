@@ -65,18 +65,35 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 // PostReservation handles the post of a reservation form
 func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
-	if err != nil{
+	if err != nil {
 		log.Println(err)
 		return
 	}
 
-	reservation:= models.Reservation{
+	reservation := models.Reservation{
 		FirstName: r.Form.Get("first_name"),
 		LastName:  r.Form.Get("last_name"),
 		Phone:     r.Form.Get("phone"),
 		Email:     r.Form.Get("email"),
 	}
-}
+
+	form := forms.New(r.PostForm)
+
+	hola := form.Has("first_name", r)
+    fmt.Printf("el valor de hola es: ", hola)
+	if !form.Valid(){
+		data := make(map[string]interface{})
+		data["reservation"] = reservation
+  
+		render.RenderTemplate(w, "make-reservation.page.html", r, &models.TemplateData{
+			Form: form,
+			Data: data,
+		})
+      return
+	}
+
+
+ }
 
 // Generals renders the room page
 func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
@@ -95,28 +112,27 @@ func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
 
 // PostAvailability renders the search availability page
 func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
-	start:= r.Form.Get("start")
-	end:= r.Form.Get("end")
+	start := r.Form.Get("start")
+	end := r.Form.Get("end")
 
 	w.Write([]byte(fmt.Sprintf("start date is %s and end date is %s", start, end)))
 }
 
 type jsonResponse struct {
-	OK      bool `json:"ok"`
+	OK      bool   `json:"ok"`
 	Message string `json: "message"`
 }
 
 func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
-	resp:= jsonResponse{
-		OK: false,
+	resp := jsonResponse{
+		OK:      false,
 		Message: "Available!",
 	}
-	out, err := json.MarshalIndent(resp, "","      ")
-	if err != nil{
+	out, err := json.MarshalIndent(resp, "", "      ")
+	if err != nil {
 		log.Println(err)
 	}
-    
-	
+
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(out)
 }
@@ -125,5 +141,3 @@ func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
 func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "contact.page.html", r, &models.TemplateData{})
 }
-
-
