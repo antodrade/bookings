@@ -1,7 +1,7 @@
 github.com/alexedwards/scs/v2 v2.6.0 h1:vxNyhWZOnlWK9NsYlgFjSaP5IGN7Cm/sf6/slLJNBos=
 github.com/alexedwards/scs/v2 v2.6.0/go.mod h1:ToaROZxyKukJKT/xLcVQAChi5k6+Pn1Gvmdl7h3RRj8=
-github.com/antodrade/bookings v0.0.0-20230830013209-7b51be7a6491 h1:lwUdERisZQeifWnAWUr/WnyBMl4mjJwsytPJbXjR/lA=
-github.com/antodrade/bookings v0.0.0-20230830013209-7b51be7a6491/go.mod h1:k8G3BpveYdkxRgG5Lu3ak6nmuWputMD31NaxBEJlY/Q=
+github.com/antodrade/bookings v0.0.0-20240216165002-5ca9d428ae96 h1:Epm5ToICuuFWcyMJ+SGl77Ep6Rl/vhiB+0q0i+jW0T4=
+github.com/antodrade/bookings v0.0.0-20240216165002-5ca9d428ae96/go.mod h1:k0NV3Vy9zplePnCkD0MHul5ylu72WrcK6BDG/JFnWi4=
 github.com/go-chi/chi v1.5.5 h1:vOB/HbEMt9QqBqErz07QehcOKHaWFtuj87tTDVz2qXE=
 github.com/go-chi/chi v1.5.5/go.mod h1:C9JqLr3tIYjDOZpzn+BCuxY8z8vmca43EeMgyZt7irw=
 github.com/justinas/nosurf v1.1.1 h1:92Aw44hjSK4MxJeMSyDa7jwuI9GR2J/JCQiaKvXXSlk=

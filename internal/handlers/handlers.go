@@ -6,10 +6,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/antodrade/bookings/internal/config"
-	"github.com/antodrade/bookings/internal/forms"
-	"github.com/antodrade/bookings/internal/models"
-	"github.com/antodrade/bookings/internal/render"
+	"bookings/internal/config"
+	"bookings/internal/forms"
+	"bookings/internal/models"
+	"bookings/internal/render"
 )
 
 // Repo the repository used by the handlers
@@ -76,6 +76,9 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 		Phone:     r.Form.Get("phone"),
 		Email:     r.Form.Get("email"),
 	}
+
+	fmt.Println(reservation)
+
 }
 
 // Generals renders the room page
